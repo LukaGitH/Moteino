@@ -1,4 +1,4 @@
-// **********************************************************************************
+//****************************************************************************************************************
 // This sketch is an example of how wireless programming can be achieved with a Moteino
 // that was loaded with a custom 1k bootloader (DualOptiboot) that is capable of loading
 // a new sketch from an external SPI flash chip
@@ -6,14 +6,11 @@
 // (ONLY the target node will need those)
 // The sketch includes logic to receive the new sketch from the serial port (from a host computer) and 
 // transmit it wirelessly to the target node
-// The handshake protocol that receives the sketch from the serial port 
-// is handled by the SPIFLash/WirelessHEX69 library, which also relies on the RFM69 library
-// These libraries and custom 1k Optiboot bootloader for the target node are at: http://github.com/lowpowerlab
-// **********************************************************************************
-// Copyright Felix Rusu 2016, http://www.LowPowerLab.com/contact
-// **********************************************************************************
+//****************************************************************************************************************
+// Copyright Felix Rusu 2018, http://www.LowPowerLab.com/contact
+//****************************************************************************************************************
 // License
-// **********************************************************************************
+//****************************************************************************************************************
 // This program is free software; you can redistribute it 
 // and/or modify it under the terms of the GNU General    
 // Public License as published by the Free Software       
@@ -31,7 +28,7 @@
 //
 // Please maintain this license information along with authorship
 // and copyright notices in any redistribution of this code
-// **********************************************************************************
+//****************************************************************************************************************
 #include <RFM69.h>          //get it here: https://github.com/lowpowerlab/RFM69
 #include <RFM69_ATC.h>      //get it here: https://github.com/lowpowerlab/RFM69
 #include <RFM69_OTA.h>      //get it here: https://github.com/lowpowerlab/RFM69
@@ -47,11 +44,11 @@
 #define FREQUENCY   RF69_868MHZ
 #define ENCRYPTKEY "sampleEncryptKey" //(16 bytes of your choice - keep the same on all encrypted nodes)
 #define IS_RFM69HW_HCW  //uncomment only for RFM69HW/HCW! Leave out if you have RFM69W/CW!
-//*********************************************************************************************
+//****************************************************************************************************************
 #define ENABLE_ATC               //comment out this line to disable AUTO TRANSMISSION CONTROL
-//*********************************************************************************************
-//#define BR_300KBPS             //run radio at max rate of 300kbps!
-//*********************************************************************************************
+//****************************************************************************************************************
+//#define BR_300KBPS             //run radio at max rate of 300kbps! (All nodes must use same speed)
+//****************************************************************************************************************
 #define DEBUG_MODE false         //set 'true' to see verbose output from programming sequence
 
 #define SERIAL_BAUD 115200
