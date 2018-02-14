@@ -8,11 +8,11 @@
 // The handshake protocol that receives the sketch wirelessly by means of the RFM69 radio
 // is handled by the SPIFLash/RFM69_OTA library, which also relies on the RFM69 library
 // These libraries and custom 1k Optiboot bootloader are at: http://github.com/lowpowerlab
-// **********************************************************************************
-// Copyright Felix Rusu 2016, http://www.LowPowerLab.com/contact
-// **********************************************************************************
+//****************************************************************************************************************
+// Copyright Felix Rusu 2018, http://www.LowPowerLab.com/contact
+//****************************************************************************************************************
 // License
-// **********************************************************************************
+//****************************************************************************************************************
 // This program is free software; you can redistribute it 
 // and/or modify it under the terms of the GNU General    
 // Public License as published by the Free Software       
@@ -30,7 +30,7 @@
 //
 // Please maintain this license information along with authorship
 // and copyright notices in any redistribution of this code
-// **********************************************************************************
+//****************************************************************************************************************
 #include <RFM69.h>         //get it here: https://github.com/lowpowerlab/RFM69
 #include <RFM69_ATC.h>     //get it here: https://github.com/lowpowerlab/RFM69
 #include <RFM69_OTA.h>     //get it here: https://github.com/lowpowerlab/RFM69
@@ -45,12 +45,12 @@
 //Match frequency to the hardware version of the radio on your Moteino (uncomment one):
 #define FREQUENCY   RF69_868MHZ
 #define IS_RFM69HW_HCW  //uncomment only for RFM69HW/HCW! Leave out if you have RFM69W/CW!
-//*****************************************************************************************************************************
+//****************************************************************************************************************
 #define ENABLE_ATC    //comment out this line to disable AUTO TRANSMISSION CONTROL
 #define ATC_RSSI      -75
-//*****************************************************************************************************************************
-//#define BR_300KBPS             //run radio at max rate of 300kbps!
-//*****************************************************************************************************************************
+//****************************************************************************************************************
+//#define BR_300KBPS             //run radio at max rate of 300kbps! (All nodes must use same speed)
+//****************************************************************************************************************
 #define SERIAL_BAUD 115200
 #define ACK_TIME    30  // # of ms to wait for an ack
 #define ENCRYPTKEY "sampleEncryptKey" //(16 bytes of your choice - keep the same on all encrypted nodes)
@@ -73,13 +73,13 @@
 char input = 0;
 long lastPeriod = -1;
 
-//*****************************************************************************************************************************
+//****************************************************************************************************************
 // flash(SPI_CS, MANUFACTURER_ID)
 // SPI_CS          - CS pin attached to SPI flash chip (8 in case of Moteino)
 // MANUFACTURER_ID - OPTIONAL, 0x1F44 for adesto(ex atmel) 4mbit flash
 //                             0xEF30 for windbond 4mbit flash
 //                             0xEF40 for windbond 16/64mbit flash
-//*****************************************************************************************************************************
+//****************************************************************************************************************
 SPIFlash flash(FLASH_SS, 0x2020); //EF30 for windbond 4mbit flash
 
 void setup() {
@@ -184,12 +184,12 @@ void loop(){
   }
   //else Serial.print('.');
   
-  //*****************************************************************************************************************************
-  // Real sketch code here, let's blink the onboard LED
+//****************************************************************************************************************
+// Real sketch code here, let's blink the onboard LED
   if ((int)(millis()/BLINKPERIOD) > lastPeriod)
   {
     lastPeriod++;
     digitalWrite(LED, lastPeriod%2);
   }
-  //*****************************************************************************************************************************
+//****************************************************************************************************************
 }
